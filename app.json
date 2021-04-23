@@ -1,0 +1,14 @@
+{
+    "name": "heroku-app",
+    "description": "Deploy nginx on Heroku.",
+    "keywords": ["heroku", "nginx"],
+    "env": {
+        "NAME": {
+            "description": "Your name",
+            "value": "Sean"
+        }
+    },
+    "website": "http://heroku-app.herokuapp.com",
+    "repository": "https://github.com/zhangsean/heroku-app",
+    "stack": "container"
+}
