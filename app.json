@@ -1,14 +1,18 @@
 {
-    "name": "heroku-app",
-    "description": "Deploy nginx on Heroku.",
-    "keywords": ["heroku", "nginx"],
+    "name": "heroku-xray",
+    "description": "Deploy xray VLESS-TCP-XTLS-WHATEVER on Heroku.",
+    "keywords": ["heroku", "xray"],
     "env": {
-        "NAME": {
-            "description": "Your name",
-            "value": "Sean"
+        "UUID": {
+            "description": "The ID for vmess/vless and password for trojan.",
+            "value": "fe919394-f173-4391-aabf-b98c8a499218"
+        },
+        "DOMAIN": {
+            "description": "The Cloudflare worker domain or Heroku app domain used by end user.",
+            "value": "app-name.seanz.workers.dev"
         }
     },
-    "website": "http://heroku-app.herokuapp.com",
-    "repository": "https://github.com/zhangsean/heroku-app",
+    "website": "http://heroku-xray.herokuapp.com",
+    "repository": "https://github.com/zhangsean/heroku-xray",
     "stack": "container"
 }

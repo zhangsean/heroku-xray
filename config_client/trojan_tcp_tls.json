@@ -1,0 +1,37 @@
+{
+    "log": {
+        "loglevel": "warning"
+    },
+    "inbounds": [
+        {
+            "port": 10800,
+            "listen": "127.0.0.1",
+            "protocol": "socks",
+            "settings": {
+                "udp": true
+            }
+        }
+    ],
+    "outbounds": [
+        {
+            "protocol": "trojan",
+            "settings": {
+                "servers": [
+                    {
+                        "address": "$DOMAIN",
+                        "port": 443,
+                        "password": "$UUID",
+                        "level": 0
+                    }
+                ]
+            },
+            "streamSettings": {
+                "network": "tcp",
+                "security": "tls",
+                "tlsSettings": {
+                    "serverName": "$DOMAIN"
+                }
+            }
+        }
+    ]
+}

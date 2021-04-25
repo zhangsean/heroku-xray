@@ -1,0 +1,163 @@
+{
+    "log": {
+        "loglevel": "warning"
+    },
+    "inbounds": [
+        {
+            "port": $PORT,
+            "protocol": "vless",
+            "settings": {
+                "clients": [
+                    {
+                        "id": "$UUID",
+                        "flow": "xtls-rprx-direct",
+                        "level": 0,
+                        "email": "love@example.com"
+                    }
+                ],
+                "decryption": "none",
+                "fallbacks": [
+                    {
+                        "dest": 1310,
+                        "xver": 1
+                    },
+                    {
+                        "path": "/vless",
+                        "dest": 1234,
+                        "xver": 1
+                    },
+                    {
+                        "path": "/vmesstcp",
+                        "dest": 2345,
+                        "xver": 1
+                    },
+                    {
+                        "path": "/vmessws",
+                        "dest": 3456,
+                        "xver": 1
+                    }
+                ]
+            },
+            "streamSettings": {
+                "network": "tcp",
+                "security": "xtls",
+                "xtlsSettings": {
+                    "alpn": [
+                        "http/1.1"
+                    ],
+                    "certificates": [
+                        {
+                            "certificateFile": "/root/.acme.sh/$DOMAIN/fullchain.crt",
+                            "keyFile": "/root/.acme.sh/$DOMAIN/$DOMAIN.key"
+                        }
+                    ]
+                }
+            }
+        },
+        {
+            "port": 1310,
+            "listen": "127.0.0.1",
+            "protocol": "trojan",
+            "settings": {
+                "clients": [
+                    {
+                        "password": "$UUID",
+                        "level": 0,
+                        "email": "love@example.com"
+                    }
+                ],
+                "fallbacks": [
+                    {
+                        "dest": 80
+                    }
+                ]
+            },
+            "streamSettings": {
+                "network": "tcp",
+                "security": "none",
+                "tcpSettings": {
+                    "acceptProxyProtocol": true
+                }
+            }
+        },
+        {
+            "port": 1234,
+            "listen": "127.0.0.1",
+            "protocol": "vless",
+            "settings": {
+                "clients": [
+                    {
+                        "id": "$UUID",
+                        "level": 0,
+                        "email": "love@example.com"
+                    }
+                ],
+                "decryption": "none"
+            },
+            "streamSettings": {
+                "network": "ws",
+                "security": "none",
+                "wsSettings": {
+                    "acceptProxyProtocol": true,
+                    "path": "/vless"
+                }
+            }
+        },
+        {
+            "port": 2345,
+            "listen": "127.0.0.1",
+            "protocol": "vmess",
+            "settings": {
+                "clients": [
+                    {
+                        "id": "$UUID",
+                        "level": 0,
+                        "email": "love@example.com"
+                    }
+                ]
+            },
+            "streamSettings": {
+                "network": "tcp",
+                "security": "none",
+                "tcpSettings": {
+                    "acceptProxyProtocol": true,
+                    "header": {
+                        "type": "http",
+                        "request": {
+                            "path": [
+                                "/vmesstcp"
+                            ]
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "port": 3456,
+            "listen": "127.0.0.1",
+            "protocol": "vmess",
+            "settings": {
+                "clients": [
+                    {
+                        "id": "$UUID",
+                        "level": 0,
+                        "email": "love@example.com"
+                    }
+                ]
+            },
+            "streamSettings": {
+                "network": "ws",
+                "security": "none",
+                "wsSettings": {
+                    "acceptProxyProtocol": true,
+                    "path": "/vmessws"
+                }
+            }
+        }
+    ],
+    "outbounds": [
+        {
+            "protocol": "freedom"
+        }
+    ]
+}

@@ -1,0 +1,52 @@
+{
+    "log": {
+        "loglevel": "warning"
+    },
+    "inbounds": [
+        {
+            "port": 10800,
+            "listen": "127.0.0.1",
+            "protocol": "socks",
+            "settings": {
+                "udp": true
+            }
+        }
+    ],
+    "outbounds": [
+        {
+            "protocol": "vmess",
+            "settings": {
+                "vnext": [
+                    {
+                        "address": "$DOMAIN",
+                        "port": 443,
+                        "users": [
+                            {
+                                "id": "$UUID",
+                                "security": "none",
+                                "level": 0
+                            }
+                        ]
+                    }
+                ]
+            },
+            "streamSettings": {
+                "network": "tcp",
+                "security": "tls",
+                "tlsSettings": {
+                    "serverName": "$DOMAIN"
+                },
+                "tcpSettings": {
+                    "header": {
+                        "type": "http",
+                        "request": {
+                            "path": [
+                                "/vmesstcp"
+                            ]
+                        }
+                    }
+                }
+            }
+        }
+    ]
+}

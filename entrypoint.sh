@@ -1,4 +1,6 @@
 #!/bin/sh
-sed -i "s|80;|$PORT;|g" /etc/nginx/conf.d/default.conf
-sed -i "s|nginx!|nginx! <br/>Deploy by <i>$NAME</i>!|g" /usr/share/nginx/html/index.html
-nginx -g "daemon off;"
+acme.sh --issue --standalone -d $DOMAIN
+for f in $(ls -1 /var/www/*.json); do envsubst < $f > $f; done
+envsubst < /etc/xray/config.json > /etc/xray/config.json
+nginx
+/usr/bin/xray -c /etc/xray/config.json
