@@ -47,8 +47,8 @@
                     ],
                     "certificates": [
                         {
-                            "certificateFile": "/root/.acme.sh/$DOMAIN/fullchain.cer",
-                            "keyFile": "/root/.acme.sh/$DOMAIN/$DOMAIN.key"
+                            "certificateFile": "~/ssl.cer",
+                            "keyFile": "~/ssl.key"
                         }
                     ]
                 }

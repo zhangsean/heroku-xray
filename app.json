@@ -10,6 +10,14 @@
         "DOMAIN": {
             "description": "The Cloudflare worker domain or Heroku app domain used by end user.",
             "value": "app-name.seanz.workers.dev"
+        },
+        "CF_KV_API_TOKEN": {
+            "description": "The Cloudflare API token with Workers KV permission.",
+            "value": "YXTcXnhf2uIIa9YoRcc8x0TmI8GdAy4d9jtYJxC4"
+        },
+        "CF_KV_NAMESPACE_ID": {
+            "description": "The Cloudflare KV namespace ID.",
+            "value": "4d7b910f88a846329264bf31cc3f5db4"
         }
     },
     "website": "http://heroku-xray.herokuapp.com",
