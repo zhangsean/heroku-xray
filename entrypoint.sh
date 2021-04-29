@@ -12,9 +12,10 @@ if grep 'key not found' ssl.cer; then
     wrangler kv:key put -n 4d7b910f88a846329264bf31cc3f45db cer ssl.cer --path
     wrangler kv:key put -n 4d7b910f88a846329264bf31cc3f45db key ssl.key --path
 else
-    wrangler kv:key get key -n $CF_KV_NAMESPACE_ID > ssl.cer
+    wrangler kv:key get key -n $CF_KV_NAMESPACE_ID > ssl.key
 fi
-for f in $(ls -1 /var/www/*.json); do envsubst < $f > $f; done
-envsubst < /etc/xray/config.json > /etc/xray/config.json
+envsubst < /xray/config.json > /etc/xray/config.json
+cd /xray/client
+for f in $(ls -1 *.json); do envsubst < $f > /var/www/$f; done
 nginx
-/usr/bin/xray -c /etc/xray/config.json
+xray -c /etc/xray/config.json
