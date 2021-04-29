@@ -47,8 +47,8 @@
                     ],
                     "certificates": [
                         {
-                            "certificateFile": "~/ssl.cer",
-                            "keyFile": "~/ssl.key"
+                            "certificateFile": "/root/ssl.cer",
+                            "keyFile": "/root/ssl.key"
                         }
                     ]
                 }
