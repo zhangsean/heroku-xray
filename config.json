@@ -11,8 +11,7 @@
                     {
                         "id": "$UUID",
                         "flow": "xtls-rprx-direct",
-                        "level": 0,
-                        "email": "love@example.com"
+                        "level": 0
                     }
                 ],
                 "decryption": "none",
@@ -43,7 +42,8 @@
                 "security": "xtls",
                 "xtlsSettings": {
                     "alpn": [
-                        "http/1.1"
+                        "http/1.1",
+                        "h2"
                     ],
                     "certificates": [
                         {
@@ -62,8 +62,7 @@
                 "clients": [
                     {
                         "password": "$UUID",
-                        "level": 0,
-                        "email": "love@example.com"
+                        "level": 0
                     }
                 ],
                 "fallbacks": [
@@ -88,8 +87,7 @@
                 "clients": [
                     {
                         "id": "$UUID",
-                        "level": 0,
-                        "email": "love@example.com"
+                        "level": 0
                     }
                 ],
                 "decryption": "none"
@@ -111,8 +109,7 @@
                 "clients": [
                     {
                         "id": "$UUID",
-                        "level": 0,
-                        "email": "love@example.com"
+                        "level": 0
                     }
                 ]
             },
@@ -140,8 +137,7 @@
                 "clients": [
                     {
                         "id": "$UUID",
-                        "level": 0,
-                        "email": "love@example.com"
+                        "level": 0
                     }
                 ]
             },
