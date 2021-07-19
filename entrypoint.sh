@@ -9,8 +9,8 @@ if grep 'key not found' ssl.cer; then
     acme.sh --issue --standalone -d $DOMAIN --httpport $PORT --tlsport $PORT
     ln -s ~/.acme.sh/$DOMAIN/fullchain.cer ssl.cer
     ln -s ~/.acme.sh/$DOMAIN/$DOMAIN.key ssl.key
-    wrangler kv:key put -n 4d7b910f88a846329264bf31cc3f45db cer ssl.cer --path
-    wrangler kv:key put -n 4d7b910f88a846329264bf31cc3f45db key ssl.key --path
+    wrangler kv:key put -n $CF_KV_NAMESPACE_ID cer ssl.cer --path
+    wrangler kv:key put -n $CF_KV_NAMESPACE_ID key ssl.key --path
 else
     wrangler kv:key get key -n $CF_KV_NAMESPACE_ID > ssl.key
 fi
