@@ -21,6 +21,6 @@
         }
     },
     "website": "http://heroku-xray.herokuapp.com",
-    "repository": "https://github.com/zhangsean/heroku-xray",
+    "repository": "https://github.com/WilliamJeffersonClinton/heroku-xray",
     "stack": "container"
 }
